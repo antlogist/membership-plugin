@@ -23,9 +23,11 @@ if ( ! defined( 'MEMBERSHIP_MANAGEMENT' ) ) {
 if(! class_exists( 'MemebershipManagement' )) {
 
   require_once plugin_dir_path( __FILE__ ) . 'Classes/RenderMembershipTab.php';
+  require_once plugin_dir_path( __FILE__ ) . 'Classes/RenderMembershipUsers.php';
 
   class MemebershipManagement {
-    private $slug = 'memebership_management';
+    private $parentSlug = 'memebership_management';
+    private $usersSubmenuSlug = 'memebership_management_submenu';
 
     function __construct() {
       add_action( 'admin_menu', array( $this, 'addMenuPage' ) );
@@ -37,14 +39,27 @@ if(! class_exists( 'MemebershipManagement' )) {
         'Memebership',                  //page_title
         'Memebership',                  //menu_title
         'manage_options',               //capability
-        $this->slug ,                   //menu_slug
-        array( $this, 'pluginRender' ), //callback_function
+        $this->parentSlug ,             //menu_slug
+        array( $this, 'parentMenuRender' ), //callback_function
         'dashicons-admin-users',        //icon
         10);                            //position
+
+        add_submenu_page(
+          $this->parentSlug ,                //parent_menu_slug
+          'Users',                           //page_title
+          'Users',                           //menu_title
+          'manage_options',                  //capability
+          $this->usersSubmenuSlug ,          //menu_slug
+          array( $this, 'usersMenuRender' ), //callback_function
+      );
     }
 
-    public function pluginRender() {
-      RenderMembershipTab::tab();
+    public function parentMenuRender() {
+      RenderMembershipTab::renderTab();
+    }
+
+    public function usersMenuRender() {
+      RenderMembershipUsers::renderTab();
     }
 
   }

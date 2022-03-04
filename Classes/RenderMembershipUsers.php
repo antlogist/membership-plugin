@@ -4,11 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-class RenderMembershipTab {
+class RenderMembershipUsers {
   static function renderTab() {
     echo '
       <div class="wrap">
-      <h1>Memebership</h1>
+      <h1>Users</h1>
       </div>
     ';
   }
