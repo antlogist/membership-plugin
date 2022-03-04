@@ -2,6 +2,6 @@
   'use strict';
 
   BASEOBJECT.membership.init = function() {
-    alert('Membership tab');
+    console.log('membrship tab');
   }
 })();

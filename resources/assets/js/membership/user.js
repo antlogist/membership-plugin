@@ -2,6 +2,13 @@
   'use strict';
 
   BASEOBJECT.user.init = function() {
-    alert('User tab');
+    const app = Vue.createApp({
+      data() {
+        return {
+          users: users,
+          userKeyHelper: 'userRow'
+        }
+      }
+    }).mount('#membershipApp');
   }
 })();

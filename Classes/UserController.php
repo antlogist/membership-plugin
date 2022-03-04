@@ -61,14 +61,14 @@ class UserController {
   public function showAll() {
 
     $this->request();
-    return $this->users;
+    return json_encode($this->users);
 
   }
 
   public function showUserByEmail($email) {
 
     $this->request($email);
-    return $this->user;
+    return json_encode($this->user);
 
   }
 
