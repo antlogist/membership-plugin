@@ -41,6 +41,7 @@ if(! class_exists( 'MemebershipManagement' )) {
     public function css_js() {
       wp_enqueue_style( 'memebership-css', plugin_dir_url( __FILE__ ) . '/dist/css/all.css', '', microtime());
       wp_enqueue_script('memebership-js', plugin_dir_url( __FILE__ ) . '/dist/js/all.js', '', microtime(), true);
+      wp_enqueue_script('memebership-vue', 'https://unpkg.com/vue@3', '', '', false);
     }
 
 
