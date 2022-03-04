@@ -1,3 +1,22 @@
-body {
-  background-color: #fff;
+$color:#deb325;
+// $color:#e8d3ab;
+$color-2: #253f46;
+$color-3: #152529;
+
+li#toplevel_page_memebership_management {
+  a {
+    color: $color;
+    .wp-menu-image:before {
+      color: $color;
+    }
+  }
+  &.wp-menu-open {
+    a.wp-menu-open {
+      background-color: $color;
+      color: #fff;
+      .wp-menu-image:before {
+        color:#fff;
+      }
+    }
+  }
 }
