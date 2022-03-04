@@ -30,7 +30,13 @@ if(! class_exists( 'MemebershipManagement' )) {
     private $usersSubmenuSlug = 'memebership_management_submenu';
 
     function __construct() {
+      add_action('admin_enqueue_scripts', array( $this, 'css_js' ));
       add_action( 'admin_menu', array( $this, 'addMenuPage' ) );
+    }
+
+    public function css_js() {
+      wp_enqueue_style( 'memebership-css', plugin_dir_url( __FILE__ ) . '/dist/css/all.css', '', microtime());
+      wp_enqueue_script('memebership-js', plugin_dir_url( __FILE__ ) . '/dist/js/all.js', '', microtime(), true);
     }
 
 
