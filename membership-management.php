@@ -12,6 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
+if(!is_admin()) {
+  return;
+}
+
 if ( ! defined( 'MEMBERSHIP_MANAGEMENT_DIRNAME' ) ) {
   define( 'MEMBERSHIP_MANAGEMENT_DIRNAME', plugin_basename( dirname( __FILE__ ) ) );
 }
