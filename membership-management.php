@@ -24,14 +24,14 @@ if ( ! defined( 'MEMBERSHIP_MANAGEMENT' ) ) {
   define('MEMBERSHIP_MANAGEMENT', '1.0.0');
 }
 
-if(! class_exists( 'MemebershipManagement' )) {
+if(! class_exists( 'MembershipManagement' )) {
 
   require_once plugin_dir_path( __FILE__ ) . 'Classes/RenderMembershipTab.php';
   require_once plugin_dir_path( __FILE__ ) . 'Classes/RenderMembershipUsers.php';
 
-  class MemebershipManagement {
-    private $parentSlug = 'memebership_management';
-    private $usersSubmenuSlug = 'memebership_management_submenu';
+  class MembershipManagement {
+    private $parentSlug = 'membership_management';
+    private $usersSubmenuSlug = 'membership_management_submenu';
 
     function __construct() {
       add_action('admin_enqueue_scripts', array( $this, 'css_js' ));
@@ -39,16 +39,16 @@ if(! class_exists( 'MemebershipManagement' )) {
     }
 
     public function css_js() {
-      wp_enqueue_style( 'memebership-css', plugin_dir_url( __FILE__ ) . '/dist/css/all.css', '', microtime());
-      wp_enqueue_script('memebership-js', plugin_dir_url( __FILE__ ) . '/dist/js/all.js', '', microtime(), true);
-      wp_enqueue_script('memebership-vue', 'https://unpkg.com/vue@3', '', '', false);
+      wp_enqueue_style( 'membership-css', plugin_dir_url( __FILE__ ) . '/dist/css/all.css', '', microtime());
+      wp_enqueue_script('membership-js', plugin_dir_url( __FILE__ ) . '/dist/js/all.js', '', microtime(), true);
+      wp_enqueue_script('membership-vue', 'https://unpkg.com/vue@3', '', '', false);
     }
 
 
     public function addMenuPage() {
       add_menu_page(
-        'Memebership',                  //page_title
-        'Memebership',                  //menu_title
+        'Membership',                  //page_title
+        'Membership',                  //menu_title
         'manage_options',               //capability
         $this->parentSlug ,             //menu_slug
         array( $this, 'parentMenuRender' ), //callback_function
@@ -61,7 +61,7 @@ if(! class_exists( 'MemebershipManagement' )) {
           'Users',                           //menu_title
           'manage_options',                  //capability
           $this->usersSubmenuSlug ,          //menu_slug
-          array( $this, 'usersMenuRender' ), //callback_function
+          array( $this, 'usersMenuRender' )  //callback_function
       );
     }
 
@@ -75,6 +75,6 @@ if(! class_exists( 'MemebershipManagement' )) {
 
   }
 
-  new MemebershipManagement();
+  new MembershipManagement();
 
 }
