@@ -20,6 +20,7 @@ class RenderMembershipUsers {
       <div class="wrap membership-wrapper" id="membershipUser">
       <h1 class="wp-heading-inline">Users</h1>
         <div id="membershipApp">
+
           <table class="wp-list-table widefat fixed striped table-view-list users">
             <thead>
               <tr>
@@ -29,6 +30,7 @@ class RenderMembershipUsers {
                 <th scope="col" id="emailTh" class="manage-column column-email">Email</th>
                 <th scope="col" id="membershipTh" class="manage-column column-membership">Membership</th>
                 <th scope="col" id="lastVisitTh" class="manage-column column-last-visit num">Last Visit</th>
+                <th scope="col" id="selectBtn" class="manage-column column-select-btn"></th>
               </tr>
             </thead>
 
@@ -40,6 +42,7 @@ class RenderMembershipUsers {
                 <td class="email-td column-email" v-text="user.email"></td>
                 <td class="membership-td column-membership" v-text="user.membership"></td>
                 <td class="lastVisit-td column-lastVisit" v-text="user.last_visit"></td>
+                <td class="selectBtn-td column-select-btn"> <button type="button" @click="openUserMenu(user)"> + </button> </td>
               </tr>
             </tbody>
 
@@ -51,10 +54,24 @@ class RenderMembershipUsers {
                 <th scope="col" id="emailTh" class="manage-column column-email">Email</th>
                 <th scope="col" id="membershipTh" class="manage-column column-membership">Membership</th>
                 <th scope="col" id="lastVisitTh" class="manage-column column-last-visit num">Last Visit</th>
+                <th scope="col" id="selectBtnTh" class="manage-column column-select-btn"></th>
               </tr>
             </tfoot>
 
           </table>
+
+          <div v-if="isModal" id="TB_overlay" class="TB_overlayBG"></div>
+          <div v-if="isModal" id="TB_window" class="thickbox-loading" style="width: 772px; height: 611px; margin-left: -386px; top: 30px; margin-top: 0px; visibility: visible;">
+            <div id="TB_title">
+              <div id="TB_ajaxWindowTitle"></div>
+              <div id="TB_closeAjaxWindow">
+                <button type="button" id="TB_closeWindowButton" @click="openUserMenu(null)" style="width:30px; height:30px; border:1px solid black;">x</button>
+              </div>
+            </div>
+            <div id="TB_ajaxContent" style="width:600px;height:545px">
+              <p>{{ currentUser.first_name }}</p>
+            </div>
+          </div>
 
         </div>
       </div>
