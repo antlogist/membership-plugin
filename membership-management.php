@@ -39,6 +39,8 @@ if(! class_exists( 'MembershipManagement' )) {
     }
 
     public function css_js() {
+      if(!wp_style_is('thickbox')) { wp_enqueue_style('thickbox'); }
+      if(!wp_script_is('plugin-install')) { wp_enqueue_script('plugin-install'); }
       wp_enqueue_style( 'membership-css', plugin_dir_url( __FILE__ ) . '/dist/css/all.css', '', microtime());
       wp_enqueue_script('membership-js', plugin_dir_url( __FILE__ ) . '/dist/js/all.js', '', microtime(), true);
       wp_enqueue_script('membership-vue', 'https://unpkg.com/vue@3', '', '', false);
